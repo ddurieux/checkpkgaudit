@@ -72,6 +72,8 @@ class CheckPkgAudit(nagiosplugin.Resource):
             raise nagiosplugin.CheckError(message)
 
         else:
+            if len(stdout.splitlines()) == 0:
+                return 0
             stdout = stdout.splitlines()[-1]
             problems = int(stdout.split()[0])
 
